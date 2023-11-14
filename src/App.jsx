@@ -9,13 +9,21 @@ const dummyData = [
 ];
 function App() {
   const [investmentData, setData]=useState(dummyData)
-  const dataHandler = (event)=>{
-    console.log(event)
+  function dataHandler(type, data){
+    if(type==='initial'){ 
+      console.log('intial type data passed '+data)
+    }else if(type==='anual'){
+      console.log()
+    }else if(type==='returns'){
+
+    }else if(type==='durations'){
+
+    }
   }
   return (
     <div>
       <Header />
-      <Input dataHandler={dataHandler}/>
+      <Input dataHandler={dataHandler()}/>
       <Investments data={investmentData} />
     </div>
   );

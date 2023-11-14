@@ -3,17 +3,18 @@ const Input = () => {
   const [inital, setInitial] = useState('')
   const [anual, setAnual] = useState('')
   const [returns, setReturn] = useState('')
+  const [duration , setDuration] = useState('')
   const intialHandler = (event) =>{
-    console.log(event.target.value)
+    PaymentResponse.dataHandler('intial',event.target.value)
   }
   const anualHandler = (event)=>{
-    console.log(event.target.value)
+    setAnual(event.target.value)
   }
   const returnHandler = (event)=>{
-    console.log(event.target.value)
+    setReturn(event.target.value)
   }
   const durationHandler = (event)=>{
-    console.log(event.target.value)
+    setDuration(event.target.value)
   }
   return (
     <form id="user-input" /*onChange={submitHandler}*/>

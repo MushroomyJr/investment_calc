@@ -1,48 +1,56 @@
-import { useState } from "react";
-const Input = () => {
-  const [inital, setInitial] = useState('')
-  const [anual, setAnual] = useState('')
-  const [returns, setReturn] = useState('')
-  const [duration , setDuration] = useState('')
-  const intialHandler = (event) =>{
-    PaymentResponse.dataHandler('intial',event.target.value)
-  }
-  const anualHandler = (event)=>{
-    setAnual(event.target.value)
-  }
-  const returnHandler = (event)=>{
-    setReturn(event.target.value)
-  }
-  const durationHandler = (event)=>{
-    setDuration(event.target.value)
-  }
+
+const Input = ({ onChange, userInput }) => {
+
+
   return (
-    <form id="user-input" /*onChange={submitHandler}*/>
-      <div>
-        <div>
+    <section id="user-input">
+      <div className="input-group">
+        <p>
           <label>Initial Investment</label>
-          <input type="number" min="0.01" step="0.01" onChange={intialHandler}/>
-        </div>
-        <div>
+          <input
+            type="number"
+            required
+            onChange={(event) =>
+              onChange("initialInvestment", event.target.value)
+            }
+            value={userInput.initialInvestment}
+          />
+        </p>
+        <p>
           <label>Anual Investment</label>
-          <input type="number" onChange={anualHandler}/>
-        </div>
-        <div>
-          <label>Expected Return</label>
-          {/* <select>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="20">20</option>
-          </select> */}
-          <input type="number" onChange={returnHandler}></input>
-        </div>
-        <div>
-          <label>Duration</label>
-          <input type="number" min="1" step="1" onChange={durationHandler}/>
-        </div>
+          <input
+            type="number"
+            required
+            onChange={(event) =>
+              onChange("anualInvestment", event.target.value)
+            }
+            value={userInput.annualInvestment}
+          />
+        </p>
       </div>
-    </form>
+      <div className="input-group">
+        <p>
+          <label>Expected Return</label>
+          <input
+            type="number"
+            required
+            onChange={(event) =>
+              onChange("expectedReturn", event.target.value)
+            }
+            value={userInput.expectedReturn}
+          />
+        </p>
+        <p>
+          <label>Duration</label>
+          <input
+            type="number"
+            required
+            onChange={(event) => onChange("duration", event.target.value)}
+            value={userInput.duration}
+          />
+        </p>
+      </div>
+    </section>
   );
 };
 
